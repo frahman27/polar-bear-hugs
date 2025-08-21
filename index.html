@@ -138,7 +138,7 @@
       <div class="dot"></div>
       <div>
         <h1>Polar‑Bear Hugs, Just for <span id="herName">You</span> 🐻‍❄️</h1>
-        <p class="muted">A tiny cozy corner to say: I'm truly sorry — and to keep caring for you, every day.</p>
+        <p class="muted">I'm sorry I duck-up on so many fronts today - this is me trying to make up.</p>
       </div>
     </header>
 
@@ -148,10 +148,10 @@
         <h2 id="typed" aria-live="polite" class="type"></h2>
         <p class="muted">Tap a button and let the polar‑bear do the talking.</p>
         <div class="btns">
-          <button class="btn" id="hugBtn">🤍 Send Warm Hug</button>
-          <button class="btn" id="teaBtn">🍵 Deliver Hot Tea</button>
+          <button class="btn" id="hugBtn">🤍 Warm Hugs</button>
+          <button class="btn" id="teaBtn">🍵 Deliver Hot Coffee</button>
           <button class="btn" id="snowBtn">❄️ Playful Snowball</button>
-          <button class="btn" id="affirmBtn">💌 Little Love Note</button>
+          <button class="btn" id="affirmBtn">💌 Little Note</button>
         </div>
       </div>
       <div class="bear-stage">
@@ -183,13 +183,13 @@
         <h3>How are you feeling? <span id="moodIcon">🙂</span></h3>
         <div class="mood">
           <div class="row"><span class="muted">ow</span><input id="mood" type="range" min="1" max="5" step="1" value="3" aria-label="mood slider"><span class="muted">okay</span></div>
-          <div id="moodMsg" class="muted">I'm here however you are. Want a hug or some tea?</div>
+          <div id="moodMsg" class="muted">I'm here for the long run. Want a hug or some tea?</div>
           <div class="chips" id="comfortChips"></div>
         </div>
       </div>
       <div class="section card">
-        <h3>Leave me a note, any time ✍️</h3>
-        <p class="muted">This saves on your device only. Write anything — a vent, a wish, a grocery list — I’ll check it and show up for it.</p>
+        <h3>In case you want to rant about me ✍️</h3>
+        <p class="muted"> Write anything — a vent, a wish, your paper due dates — to send to me after.</p>
         <textarea id="notes" placeholder="Type here…"></textarea>
       </div>
     </section>
@@ -200,7 +200,7 @@
     </section>
 
     <footer>
-      Built with gentle energy. If this made you smile even 1%, that’s a win. ♡
+      Built with low-ish energy. If this made you smile even 1%, that’s a win. ♡
     </footer>
   </div>
 
@@ -223,7 +223,7 @@
     document.getElementById('myNameTag').textContent = MY_NAME;
 
     // Typewriter
-    const message = `Hi ${HER_NAME}, I’m truly sorry. I love you, I’m listening, and I’m here to make it right.`;
+    const message = `Hi ${HER_NAME}, sorry for being a dumbass`;
     function typewrite(el, text, speed=26){
       el.textContent = '';
       let i = 0; const tick = () => {
@@ -299,20 +299,20 @@
     const moodIcon = document.getElementById('moodIcon');
     const chips = document.getElementById('comfortChips');
     const suggestions = {
-      1:["Deep breaths together", "30s shoulder drop", "Bear hug x 2"],
-      2:["Hot water bottle", "Cozy blanket", "Tea with honey"],
-      3:["Stretch + music", "Silly meme", "Short walk idea"],
-      4:["Game night plan", "Pick a movie", "FaceTime later?"],
-      5:["Celebrate small win", "Your song", "Tiny dance"]
+      1:["Text me(if u want)", "Hot Water Bag pls", "Bear hug x 2"],
+      2:["Chocolate please", "Cozy blanket", "Send me reels"],
+      3:["Music", "Pray(for us)", "Short walk(inside?)"],
+      4:["Shopping timee", "Pick a movie to watch", "Think abt me"],
+      5:["Study?", "Okay how are you this happy?", "Shake if for tasnia?(me>)"]
     }
     function updateMood(){
       const v = +mood.value; const map={1:'🥺',2:'😣',3:'🙂',4:'😊',5:'🤩'}; moodIcon.textContent = map[v];
       const texts={
-        1:`Ouch day. I’ll be extra gentle — want a hug or quiet company?`,
-        2:`Tough but manageable. I’ll bring warm tea + zero pressure.`,
+        1:`Ouch day. I’ll be extra gentle — let me know if i should go away`,
+        2:`Still sucks, I'll try to distract you`,
         3:`Holding steady. I’m proud of you.`,
-        4:`Getting brighter. What tiny joy can I add?`,
-        5:`Glowing! Let me hype you up.`
+        4:`Better, will start annoying you`,
+        5:`Glowing! Will annoy you 10/10.`
       }; moodMsg.textContent = texts[v];
       chips.innerHTML=''; suggestions[v].forEach(s=>{ const el=document.createElement('span'); el.className='chip'; el.textContent=s; chips.appendChild(el);});
       // Save last mood locally
@@ -327,11 +327,11 @@
 
     // Promises list
     const promises = [
-      "I’ll listen first, respond second.",
-      "I’ll choose soft words over being ‘right’.",
-      "I’ll ask what you need before guessing.",
+      "I’ll think before i speak",
+      "I’ll not be dumb asf",
+      "I’ll be better",
       "I’ll keep checking in — especially on tough days.",
-      "I’ll own my mistakes and repair them faster.",
+      "I’ll learn to do better by you",
     ];
     const promiseWrap = document.getElementById('promises');
     promises.forEach((p,i)=>{
@@ -340,11 +340,11 @@
 
     // Affirmations
     const notesArr = [
-      `You’re not alone in this. I’m on your team forever.`,
-      `Your softness is powerful.`,
-      `You’re allowed to rest. I’ll hold the world for you.`,
-      `Nothing about you needs fixing — only soothing.`,
-      `I am so lucky I get to love you.`,
+      `I really like you`,
+      `You're so smart I actually cant`,
+      `You’re allowed to rest. Don't be on autopilot`,
+      `I'm an idiot for not DM-ing earlier`,
+      `I need to wife you up so bad and so fast`,
     ];
     affirmBtn.addEventListener('click', ()=>{
       caption.textContent = notesArr[Math.floor(Math.random()*notesArr.length)];
