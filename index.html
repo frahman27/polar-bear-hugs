@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Polar Bear Hugs 🐻‍❄️ — I'm Sorry</title>
+  <meta name="description" content="A soft, playful apology site with polar-bear hugs, warm tea, and daily check‑ins." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-start:#f2fbff;  /* icy blue */
+      --bg-end:#ffeaf3;    /* soft pink */
+      --ink:#0b132b;       /* deep navy */
+      --muted:#667085;     /* cool gray */
+      --accent:#4db6ff;    /* polar blue */
+      --accent-2:#ff7fb1;  /* rosy pink */
+      --glass: rgba(255,255,255,.55);
+      --card: rgba(255,255,255,.75);
+      --shadow: 0 10px 30px rgba(13, 23, 46, .15);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink);
+      background: radial-gradient(1200px 800px at 20% -10%, var(--bg-end), transparent 40%),
+                  radial-gradient(1200px 800px at 120% 0%, var(--bg-start), transparent 40%),
+                  linear-gradient(180deg, #ffffff, #eef7ff);
+      overflow-x:hidden;
+    }
+
+    /* Snow layer */
+    .snow{position:fixed; inset:0; pointer-events:none; z-index:-1;}
+
+    .wrap{max-width:900px; margin:0 auto; padding: clamp(16px, 4vw, 40px); padding-bottom: calc(32px + env(safe-area-inset-bottom));}
+
+    header{display:flex; align-items:center; gap:16px; margin: 8px 0 24px;}
+    header .dot{width:12px; height:12px; background:linear-gradient(45deg,var(--accent),var(--accent-2)); border-radius:999px; box-shadow:0 0 0 6px rgba(77,182,255,.12)}
+    header h1{font-family:"Poppins", sans-serif; font-weight:700; font-size: clamp(28px, 5vw, 44px); margin:0; letter-spacing:.5px}
+    header p{margin:2px 0 0; color:var(--muted)}
+
+    .hero{display:grid; grid-template-columns: 1.2fr 1fr; gap:clamp(16px,3vw,28px); align-items:center;}
+    @media (max-width:900px){ .hero{grid-template-columns:1fr;}}
+
+    .card{background:var(--card); border:1px solid rgba(13,23,46,.06); backdrop-filter: blur(10px); border-radius: var(--radius); box-shadow: var(--shadow);}
+
+    .apology{padding: clamp(16px,3vw,24px)}
+    .tag{display:inline-block; padding:6px 12px; border-radius:999px; background:linear-gradient(120deg, rgba(77,182,255,.15), rgba(255,127,177,.15)); border:1px solid rgba(13,23,46,.08); color:#344054; font-weight:600; font-size:13px; letter-spacing:.2px}
+    .apology h2{font-family:"Poppins", sans-serif; font-size:clamp(22px,3.5vw,30px); margin:12px 0 6px}
+    .type{min-height:2.4em}
+
+    .btns{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .btn{
+      --bg: linear-gradient(180deg, #fff, #f7fbff);
+      background: var(--bg);
+      border:1px solid rgba(13,23,46,.08);
+      border-radius: 14px; padding:10px 14px; font-weight:700; cursor:pointer; box-shadow: var(--shadow);
+      transition: transform .08s ease, box-shadow .25s ease; user-select:none
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn:active{transform:translateY(0)}
+
+    .bear-stage{position:relative; min-height: 360px; display:grid; place-items:center; overflow:hidden}
+    .ground{position:absolute; left:0; right:0; bottom:0; height:70px; background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,1)); border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius);}
+
+    /* CSS polar bear (simple + cute) */
+    .bear{position:relative; width:230px; height:260px;}
+    .bear .body{position:absolute; left:50%; transform:translateX(-50%); bottom:25px; width:180px; height:160px; background:#fff; border-radius: 90px 90px 80px 80px; box-shadow: inset 0 -8px 0 rgba(0,0,0,.03)}
+    .bear .head{position:absolute; left:50%; transform:translateX(-50%); bottom:150px; width:160px; height:135px; background:#fff; border-radius: 80px; box-shadow: 0 2px 0 rgba(0,0,0,.04)}
+    .bear .ear{position:absolute; width:48px; height:48px; background:#fff; border-radius:50%; top: -6px; box-shadow: inset 0 -6px 0 rgba(0,0,0,.03)}
+    .bear .ear.left{left:22px}
+    .bear .ear.right{right:22px}
+    .bear .eye{position:absolute; top:46px; width:10px; height:10px; background:#111; border-radius:50%; box-shadow: 0 0 0 3px #fff}
+    .bear .eye.left{left:56px}
+    .bear .eye.right{right:56px}
+    .bear .snout{position:absolute; left:50%; transform:translateX(-50%); top:64px; width:70px; height:48px; background:#f8f8f8; border-radius: 28px;}
+    .bear .nose{position:absolute; left:50%; transform:translateX(-50%); top:8px; width:26px; height:20px; background:#222; border-radius: 14px 14px 10px 10px}
+    .bear .mouth{position:absolute; left:50%; transform:translateX(-50%); top:28px; width:38px; height:22px; border-bottom:4px solid #222; border-radius:0 0 22px 22px}
+    .bear .blush{position:absolute; top:78px; width:20px; height:12px; background:rgba(255,127,177,.35); border-radius:999px}
+    .bear .blush.left{left:28px}
+    .bear .blush.right{right:28px}
+
+    .bear .arm{position:absolute; width:90px; height:70px; background:#fff; top:170px; border-radius:40px; box-shadow: inset 0 -5px 0 rgba(0,0,0,.03)}
+    .bear .arm.left{left: -6px; transform-origin: 80% 40%; transform: rotate(18deg)}
+    .bear .arm.right{right:-6px; transform-origin: 20% 40%; transform: rotate(-18deg)}
+
+    .bear.hug .arm.left{animation: hugL .9s ease forwards}
+    .bear.hug .arm.right{animation: hugR .9s ease forwards}
+    @keyframes hugL{to{transform: rotate(55deg) translate(6px, -18px)}}
+    @keyframes hugR{to{transform: rotate(-55deg) translate(-6px, -18px)}}
+
+    .flowers{position:absolute; left:50%; transform:translateX(-50%); top:198px; display:flex; gap:12px}
+    .flower{width:20px; height:20px; background: radial-gradient(circle at 40% 40%, #fff 0 35%, #ffd4e7 36% 100%); border-radius:50%; position:relative}
+    .flower:before, .flower:after{content:""; position:absolute; inset:-4px; background: radial-gradient(circle at 60% 60%, #fff 0 35%, #bae3ff 36% 100%); border-radius:50%; transform: rotate(45deg)}
+    .stem{position:absolute; left:50%; transform:translateX(-50%); top:210px; width:6px; height:56px; background:linear-gradient(180deg, #75d68a, #3cae5b); border-radius:6px}
+
+    .caption{position:absolute; top:12px; left:50%; transform:translateX(-50%); background:var(--glass); border:1px solid rgba(13,23,46,.08); padding:8px 12px; border-radius:999px; font-weight:700; font-size:13px}
+
+    .ground .heart{position:absolute; left:50%; transform:translateX(-50%) scale(.2); bottom:10px; font-size:160px; opacity:.0; filter: drop-shadow(0 6px 10px rgba(255,127,177,.2))}
+    .ground .heart.show{animation: popHeart .9s ease forwards}
+    @keyframes popHeart{ 40%{transform:translateX(-50%) scale(1.06); opacity:.95} 100%{transform:translateX(-50%) scale(1); opacity:1}}
+
+    /* Mood + notes */
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(12px,2.4vw,20px); margin-top:20px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .section{padding: clamp(16px,3vw,22px)}
+    h3{margin:0 0 12px; font-family:"Poppins", sans-serif}
+    .muted{color:var(--muted)}
+
+    .mood{display:grid; gap:10px}
+    .mood .row{display:flex; align-items:center; gap:12px}
+    .mood input[type=range]{width:100%}
+    .mood .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{padding:8px 12px; border-radius:999px; background:#fff; border:1px dashed rgba(13,23,46,.15); font-weight:600; font-size:13px}
+
+    textarea{width:100%; min-height:160px; border-radius:14px; border:1px solid rgba(13,23,46,.1); padding:12px 14px; font:inherit; background:#fff; box-shadow: inset 0 1px 0 rgba(13,23,46,.04)}
+    textarea:focus{outline:2px solid rgba(77,182,255,.35)}
+
+    .promises{display:grid; gap:8px}
+    details{background:#fff; border:1px solid rgba(13,23,46,.08); border-radius:14px; padding:12px 14px}
+    summary{cursor:pointer; list-style:none; font-weight:800}
+    summary::-webkit-details-marker{display:none}
+
+    footer{margin:24px 0 0; text-align:center; color:var(--muted); font-size:13px}
+
+    /* confetti + tea + snowball */
+    .confetti, .floaty{position:fixed; font-size:20px; pointer-events:none}
+  </style>
+</head>
+<body>
+  <canvas class="snow" id="snow"></canvas>
+  <div class="wrap">
+    <header>
+      <div class="dot"></div>
+      <div>
+        <h1>Polar‑Bear Hugs, Just for <span id="herName">You</span> 🐻‍❄️</h1>
+        <p class="muted">A tiny cozy corner to say: I'm truly sorry — and to keep caring for you, every day.</p>
+      </div>
+    </header>
+
+    <section class="hero card">
+      <div class="apology">
+        <span class="tag">from <span id="myNameTag">Me</span> • with big, gentle energy</span>
+        <h2 id="typed" aria-live="polite" class="type"></h2>
+        <p class="muted">Tap a button and let the polar‑bear do the talking.</p>
+        <div class="btns">
+          <button class="btn" id="hugBtn">🤍 Send Warm Hug</button>
+          <button class="btn" id="teaBtn">🍵 Deliver Hot Tea</button>
+          <button class="btn" id="snowBtn">❄️ Playful Snowball</button>
+          <button class="btn" id="affirmBtn">💌 Little Love Note</button>
+        </div>
+      </div>
+      <div class="bear-stage">
+        <div class="caption" id="caption">I brought flowers…</div>
+        <div class="bear" id="bear" aria-label="cute polar bear holding flowers" role="img">
+          <div class="ear left"></div>
+          <div class="ear right"></div>
+          <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="snout"><div class="nose"></div><div class="mouth"></div></div>
+            <div class="blush left"></div>
+            <div class="blush right"></div>
+          </div>
+          <div class="body"></div>
+          <div class="arm left"></div>
+          <div class="arm right"></div>
+          <div class="flowers"><div class="flower"></div><div class="flower"></div><div class="flower"></div></div>
+          <div class="stem"></div>
+        </div>
+        <div class="ground">
+          <div class="heart" id="heart">❤</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="section card">
+        <h3>How are you feeling? <span id="moodIcon">🙂</span></h3>
+        <div class="mood">
+          <div class="row"><span class="muted">ow</span><input id="mood" type="range" min="1" max="5" step="1" value="3" aria-label="mood slider"><span class="muted">okay</span></div>
+          <div id="moodMsg" class="muted">I'm here however you are. Want a hug or some tea?</div>
+          <div class="chips" id="comfortChips"></div>
+        </div>
+      </div>
+      <div class="section card">
+        <h3>Leave me a note, any time ✍️</h3>
+        <p class="muted">This saves on your device only. Write anything — a vent, a wish, a grocery list — I’ll check it and show up for it.</p>
+        <textarea id="notes" placeholder="Type here…"></textarea>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h3>Ways I’ll do better</h3>
+      <div class="promises" id="promises"></div>
+    </section>
+
+    <footer>
+      Built with gentle energy. If this made you smile even 1%, that’s a win. ♡
+    </footer>
+  </div>
+
+  <script>
+    // ======= personalize here =======
+    const HER_NAME = "Your Love";   // ← replace with her name (e.g., "Fairooze")
+    const MY_NAME  = "Me";          // ← replace with your name
+    // =================================
+
+    const typed = document.getElementById('typed');
+    const hugBtn = document.getElementById('hugBtn');
+    const teaBtn = document.getElementById('teaBtn');
+    const snowBtn = document.getElementById('snowBtn');
+    const affirmBtn = document.getElementById('affirmBtn');
+    const bear = document.getElementById('bear');
+    const heart = document.getElementById('heart');
+    const caption = document.getElementById('caption');
+
+    document.getElementById('herName').textContent = HER_NAME;
+    document.getElementById('myNameTag').textContent = MY_NAME;
+
+    // Typewriter
+    const message = `Hi ${HER_NAME}, I’m truly sorry. I love you, I’m listening, and I’m here to make it right.`;
+    function typewrite(el, text, speed=26){
+      el.textContent = '';
+      let i = 0; const tick = () => {
+        el.textContent = text.slice(0, i++);
+        if(i <= text.length) requestAnimationFrame(tick);
+      };
+      tick();
+    }
+    typewrite(typed, message);
+
+    // Hug animation
+    function sendHug(){
+      bear.classList.remove('hug'); void bear.offsetWidth; // restart animation
+      bear.classList.add('hug');
+      heart.classList.remove('show'); void heart.offsetWidth; heart.classList.add('show');
+      caption.textContent = 'Big, gentle bear hug.';
+      confetti(['🤍','💗','🤍','💗'], 28);
+    }
+
+    // Tea animation
+    function sendTea(){
+      caption.textContent = 'One warm tea incoming…';
+      const cup = document.createElement('div');
+      cup.textContent = '🍵';
+      cup.className = 'floaty';
+      cup.style.left = (window.innerWidth/2 - 10) + 'px';
+      cup.style.bottom = '40px';
+      document.body.appendChild(cup);
+      let y=40, v=0.9; const id = setInterval(()=>{
+        y += v; v *= 1.02; cup.style.bottom = y + 'px';
+        if(y>window.innerHeight-120){ clearInterval(id); cup.remove(); steam();}
+      }, 16);
+    }
+    function steam(){
+      for(let i=0;i<8;i++){
+        const s = document.createElement('div'); s.textContent='჻'; s.className='floaty';
+        s.style.left=(window.innerWidth/2 + (Math.random()*60-30))+'px'; s.style.bottom='120px';
+        document.body.appendChild(s);
+        let y=120, a=1, drift=(Math.random()*1.6-0.8);
+        const id=setInterval(()=>{ y+=2; a-=0.02; s.style.bottom=y+'px'; s.style.opacity=a; s.style.transform=`translateX(${(120-y)*drift}px)`; if(a<=0){clearInterval(id); s.remove();}}, 16);
+      }
+      confetti(['✨','💫','🫖'], 16);
+    }
+
+    // Snowball animation
+    function snowball(){
+      caption.textContent = 'A playful snowball — gently!';
+      const s = document.createElement('div'); s.textContent='⛄'; s.className='floaty'; s.style.left='-40px'; s.style.top='60%'; s.style.fontSize='28px'; document.body.appendChild(s);
+      let x=-40, y=window.innerHeight*0.6, vx=6, vy=-2, g=0.2; const id=setInterval(()=>{
+        x+=vx; vy+=g; y+=vy; s.style.left=x+'px'; s.style.top=y+'px'; if(x>window.innerWidth){clearInterval(id); s.remove(); confetti(['❄️','❄️','🤍'],20);} }, 16);
+    }
+
+    // Confetti (emojis)
+    function confetti(chars, count){
+      for(let i=0;i<count;i++){
+        const c = document.createElement('div');
+        c.textContent = chars[Math.floor(Math.random()*chars.length)];
+        c.className='confetti';
+        c.style.left = Math.random()*window.innerWidth + 'px';
+        c.style.top = '-20px';
+        document.body.appendChild(c);
+        let y=-20, rot=0, speed=2+Math.random()*2;
+        const id = setInterval(()=>{
+          y += speed; rot += 2; c.style.top = y+'px'; c.style.transform=`rotate(${rot}deg)`;
+          if(y>window.innerHeight+20){ clearInterval(id); c.remove(); }
+        }, 16);
+      }
+    }
+
+    // Mood slider + comfort chips
+    const mood = document.getElementById('mood');
+    const moodMsg = document.getElementById('moodMsg');
+    const moodIcon = document.getElementById('moodIcon');
+    const chips = document.getElementById('comfortChips');
+    const suggestions = {
+      1:["Deep breaths together", "30s shoulder drop", "Bear hug x 2"],
+      2:["Hot water bottle", "Cozy blanket", "Tea with honey"],
+      3:["Stretch + music", "Silly meme", "Short walk idea"],
+      4:["Game night plan", "Pick a movie", "FaceTime later?"],
+      5:["Celebrate small win", "Your song", "Tiny dance"]
+    }
+    function updateMood(){
+      const v = +mood.value; const map={1:'🥺',2:'😣',3:'🙂',4:'😊',5:'🤩'}; moodIcon.textContent = map[v];
+      const texts={
+        1:`Ouch day. I’ll be extra gentle — want a hug or quiet company?`,
+        2:`Tough but manageable. I’ll bring warm tea + zero pressure.`,
+        3:`Holding steady. I’m proud of you.`,
+        4:`Getting brighter. What tiny joy can I add?`,
+        5:`Glowing! Let me hype you up.`
+      }; moodMsg.textContent = texts[v];
+      chips.innerHTML=''; suggestions[v].forEach(s=>{ const el=document.createElement('span'); el.className='chip'; el.textContent=s; chips.appendChild(el);});
+      // Save last mood locally
+      localStorage.setItem(key('mood'), v);
+    }
+    mood.addEventListener('input', updateMood);
+
+    // Notes (local)
+    const notes = document.getElementById('notes');
+    function key(s){ return `polar.${HER_NAME}.${s}` }
+    notes.addEventListener('input', ()=> localStorage.setItem(key('notes'), notes.value));
+
+    // Promises list
+    const promises = [
+      "I’ll listen first, respond second.",
+      "I’ll choose soft words over being ‘right’.",
+      "I’ll ask what you need before guessing.",
+      "I’ll keep checking in — especially on tough days.",
+      "I’ll own my mistakes and repair them faster.",
+    ];
+    const promiseWrap = document.getElementById('promises');
+    promises.forEach((p,i)=>{
+      const d = document.createElement('details'); const s = document.createElement('summary'); s.textContent = `#${i+1}`; const b=document.createElement('div'); b.textContent=p; d.appendChild(s); d.appendChild(b); promiseWrap.appendChild(d);
+    })
+
+    // Affirmations
+    const notesArr = [
+      `You’re not alone in this. I’m on your team forever.`,
+      `Your softness is powerful.`,
+      `You’re allowed to rest. I’ll hold the world for you.`,
+      `Nothing about you needs fixing — only soothing.`,
+      `I am so lucky I get to love you.`,
+    ];
+    affirmBtn.addEventListener('click', ()=>{
+      caption.textContent = notesArr[Math.floor(Math.random()*notesArr.length)];
+      confetti(['💌','🤍','💗'], 20);
+    })
+
+    // Hook up buttons
+    hugBtn.addEventListener('click', sendHug);
+    teaBtn.addEventListener('click', sendTea);
+    snowBtn.addEventListener('click', snowball);
+
+    // Restore state
+    window.addEventListener('load', ()=>{
+      const saved = localStorage.getItem(key('notes')); if(saved) notes.value = saved;
+      const savedMood = localStorage.getItem(key('mood')); if(savedMood){ mood.value = savedMood; }
+      updateMood();
+      initSnow();
+    });
+
+    // Simple snowfall on canvas (battery-light)
+    function initSnow(){
+      const c = document.getElementById('snow'); const ctx = c.getContext('2d');
+      function size(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+      size(); window.addEventListener('resize', size, {passive:true});
+      const flakes = Array.from({length: 80}, ()=>({
+        x: Math.random()*c.width,
+        y: Math.random()*c.height,
+        r: Math.random()*2+0.6,
+        s: Math.random()*0.7+0.2,
+      }));
+      (function anim(){ ctx.clearRect(0,0,c.width,c.height); ctx.fillStyle='rgba(255,255,255,.9)';
+        flakes.forEach(f=>{ ctx.beginPath(); ctx.arc(f.x,f.y,f.r,0,Math.PI*2); ctx.fill(); f.y+=f.s; f.x+=Math.sin(f.y*0.01)*0.2; if(f.y>c.height) f.y=-5; }); requestAnimationFrame(anim); })();
+    }
+  </script>
+</body>
+</html>
