@@ -45,7 +45,7 @@
     .hero{display:grid; grid-template-columns: 1.2fr 1fr; gap:clamp(16px,3vw,28px); align-items:center;}
     @media (max-width:900px){ .hero{grid-template-columns:1fr;}}
 
-    .card{background:var(--card); border:1px solid rgba(13,23,46,.06); backdrop-filter: blur(10px); border-radius: var(--radius); box-shadow: var(--shadow);}
+    .card{background:var(--card); border:1px solid rgba(13,23,46,.06); backdrop-filter: blur(10px); border-radius: var(--radius); box-shadow: var(--shadow); position: relative; z-index: 1;}
 
     .apology{padding: clamp(16px,3vw,24px)}
     .tag{display:inline-block; padding:6px 12px; border-radius:999px; background:linear-gradient(120deg, rgba(77,182,255,.15), rgba(255,127,177,.15)); border:1px solid rgba(13,23,46,.08); color:#344054; font-weight:600; font-size:13px; letter-spacing:.2px}
@@ -63,7 +63,7 @@
     .btn:hover{transform:translateY(-1px)}
     .btn:active{transform:translateY(0)}
 
-    .bear-stage{position:relative; min-height: 360px; display:grid; place-items:center; overflow:hidden}
+    .bear-stage{position:relative; min-height: 360px; display:grid; place-items:center; overflow:hidden;z-index: 0;}
     .ground{position:absolute; left:0; right:0; bottom:0; height:70px; background:linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,1)); border-bottom-left-radius:var(--radius); border-bottom-right-radius:var(--radius);}
 
     /* CSS polar bear (simple + cute) */
